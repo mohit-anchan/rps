@@ -11,6 +11,10 @@ public class AIPlayer extends Player {
 
     private static final Random RANDOM = new Random();
 
+    public AIPlayer(String name) {
+        this.name = name;
+    }
+
     @Override
     public void makeMove() {
         /* Get a random value out of enum */

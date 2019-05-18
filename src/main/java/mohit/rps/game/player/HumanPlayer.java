@@ -11,6 +11,10 @@ public class HumanPlayer extends Player {
 
     private Scanner input = new Scanner(System.in);
 
+    public HumanPlayer(String name) {
+        this.name = name;
+    }
+
     @Override
     public void makeMove() {
         String userInput = fetchUserInput();

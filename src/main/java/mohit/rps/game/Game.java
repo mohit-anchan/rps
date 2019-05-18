@@ -30,9 +30,9 @@ public class Game {
     public static Game bootstrapGame(int gameMode, GameRules rules) {
         switch (gameMode) {
             case PLAYER_VS_AI:
-                return new Game(new HumanPlayer(), new AIPlayer(), rules);
+                return new Game(new HumanPlayer("User"), new AIPlayer("Computer"), rules);
             case AI_VS_AI:
-                return new Game(new AIPlayer(), new AIPlayer(), rules);
+                return new Game(new AIPlayer("Computer1"), new AIPlayer("Computer2"), rules);
             default:
                 throw new IllegalArgumentException();
         }
@@ -48,18 +48,28 @@ public class Game {
     }
 
     private void printMoves(){
-        System.out.println("Player1 plays "+player1.getMove());
-        System.out.println("Player2 plays "+player2.getMove());
+        System.out.println(player1.getName() + " plays "+player1.getMove());
+        System.out.println(player2.getName() + " plays "+player2.getMove());
     }
 
     public void printResult(){
-        String resultMsg = (this.result == Result.Draw)
-                ? "Its a Draw"
-                : this.result.toString() + " is the winner";
+        System.out.println("===================================");
+        System.out.println(getResultMessage());
+        System.out.println("===================================");
+    }
 
-        System.out.println("===================================");
-        System.out.println(resultMsg);
-        System.out.println("===================================");
+    private String getResultMessage(){
+        if (this.result == Result.Draw) {
+            return "Its a Draw";
+        }
+
+        if (this.result == Result.Player1) {
+            return this.player1.getMove() + " beats " + this.player2.getMove()
+                    + "\n" + this.player1.getName() + " is the winner";
+        }
+
+        return this.player2.getMove() + " beats " + this.player1.getMove()
+                + "\n" + this.player2.getName() + " is the winner";
     }
 
     public Result getResult() {
