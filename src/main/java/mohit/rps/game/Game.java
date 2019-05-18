@@ -60,4 +60,12 @@ public class Game {
     public Result getResult() {
         return result;
     }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
 }
