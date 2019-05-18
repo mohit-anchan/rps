@@ -1,20 +1,17 @@
 package mohit.rps.game;
 
-import mohit.rps.game.moves.GameMoveConfig;
-import mohit.rps.game.moves.GameMove;
 import mohit.rps.game.player.AIPlayer;
 import mohit.rps.game.player.HumanPlayer;
 import mohit.rps.game.player.Player;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import mohit.rps.game.rule.GameRules;
+import mohit.rps.game.rule.RPSGameRules;
 
 /**
  *
  */
 public class Game {
+    private GameRules rules;
+
     private Player player1;
     private Player player2;
 
@@ -24,34 +21,21 @@ public class Game {
     public static final int PLAYER_VS_AI = 1;
     public static final int AI_VS_AI = 2;
 
-    private static List<GameMoveConfig> moves;
-    static {
-        initializeMoves();
-    }
-
-    public Game(Player player1, Player player2) {
+    public Game(Player player1, Player player2, GameRules rules) {
         this.player1 = player1;
         this.player2 = player2;
+        this.rules = rules;
     }
 
-    public static Game bootstrapGame(int gameMode) {
+    public static Game bootstrapGame(int gameMode, GameRules rules) {
         switch (gameMode) {
             case PLAYER_VS_AI:
-                return new Game(new HumanPlayer(), new AIPlayer());
+                return new Game(new HumanPlayer(), new AIPlayer(), rules);
             case AI_VS_AI:
-                return new Game(new AIPlayer(), new AIPlayer());
+                return new Game(new AIPlayer(), new AIPlayer(), rules);
             default:
                 throw new IllegalArgumentException();
         }
-    }
-
-    private static void initializeMoves() {
-        moves = Stream.of(
-                    new GameMoveConfig(GameMove.ROCK, Arrays.asList(GameMove.SCISSOR)),
-                    new GameMoveConfig(GameMove.PAPER, Arrays.asList(GameMove.ROCK)),
-                    new GameMoveConfig(GameMove.SCISSOR, Arrays.asList(GameMove.PAPER))
-                )
-                .collect(Collectors.toList());
     }
 
     public void start() {
@@ -60,31 +44,12 @@ public class Game {
 
         printMoves();
 
-        compareMoves();
+        result = rules.compareMoves(player1.getMove(), player2.getMove());
     }
 
     private void printMoves(){
         System.out.println("Player1 plays "+player1.getMove());
         System.out.println("Player2 plays "+player2.getMove());
-    }
-
-    private void compareMoves() {
-        if (isDraw()) {
-            result = Result.Draw;
-            return;
-        }
-
-        //TODO: remove call to getGameMove here
-        if (getGameMove(player1.getMove()).winsAgainst(getGameMove(player2.getMove()))) {
-            result = Result.Player1;
-            return;
-        }
-
-        result = Result.Player2;
-    }
-
-    private boolean isDraw(){
-        return player1.getMove().equals(player2.getMove());
     }
 
     public void printResult(){
@@ -100,12 +65,4 @@ public class Game {
     public Result getResult() {
         return result;
     }
-
-    public static GameMoveConfig getGameMove(GameMove moveName){
-        return moves.stream()
-                .filter(m -> m.getName() == moveName)
-                .findAny()
-                .orElseThrow(() -> new RuntimeException(moveName.toString() + " is not a legal move."));
-    }
-
 }

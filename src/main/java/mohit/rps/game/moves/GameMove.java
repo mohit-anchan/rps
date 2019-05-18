@@ -22,4 +22,8 @@ public enum GameMove {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException());
     }
+
+    public String getInitial() {
+        return initial;
+    }
 }

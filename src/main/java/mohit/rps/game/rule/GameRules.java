@@ -7,13 +7,13 @@ import mohit.rps.game.moves.GameMove;
 import java.util.List;
 
 /**
- * Created by mohit on 18-May-19.
+ *
  */
 public abstract class GameRules {
 
     abstract List<GameMoveConfig> getValidMoves();
 
-    public Result getResult(GameMove player1Move, GameMove player2Move){
+    public Result compareMoves(GameMove player1Move, GameMove player2Move){
         if (player1Move == player2Move) {
             return Result.Draw;
         }
@@ -30,6 +30,6 @@ public abstract class GameRules {
         return getValidMoves().stream()
                 .filter(m -> m.getName() == moveName)
                 .findAny()
-                .orElseThrow(() -> new RuntimeException(moveName.toString() + " is not a legal move."));
+                .orElseThrow(() -> new RuntimeException(moveName.toString() + " is not a valid move."));
     }
 }

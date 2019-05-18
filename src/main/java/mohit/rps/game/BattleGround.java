@@ -1,5 +1,7 @@
 package mohit.rps.game;
 
+import mohit.rps.game.rule.RPSGameRules;
+
 import java.util.Scanner;
 
 /**
@@ -13,7 +15,7 @@ public class BattleGround {
                 int gameMode = getGameModeFromUser(in);
 
                 try {
-                    Game game = Game.bootstrapGame(gameMode);
+                    Game game = Game.bootstrapGame(gameMode, new RPSGameRules());
                     game.start();
                     game.printResult();
                 } catch (IllegalArgumentException e) {

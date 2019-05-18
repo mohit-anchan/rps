@@ -11,10 +11,6 @@ public class HumanPlayer extends Player {
 
     private Scanner input = new Scanner(System.in);
 
-//    public HumanPlayer(Scanner input) {
-//        this.input = input;
-//    }
-
     @Override
     public void makeMove() {
         String userInput = fetchUserInput();
@@ -24,9 +20,10 @@ public class HumanPlayer extends Player {
     private String fetchUserInput() {
         String accStr;
         System.out.println("Make your move by pressing one of below characters: ");
-        System.out.println(" R for Rock");
-        System.out.println(" P for Paper");
-        System.out.println(" S for Scissor");
+        for (GameMove move : GameMove.values()) {
+            /* This prints as "R for Rock" */
+            System.out.println(move.getInitial() + " for "+ move.name());
+        }
 
         accStr = input.next();
         return accStr;
