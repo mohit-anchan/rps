@@ -17,25 +17,10 @@ public class Game {
 
     private Result result;
 
-    /* Game Modes */
-    public static final int PLAYER_VS_AI = 1;
-    public static final int AI_VS_AI = 2;
-
     public Game(Player player1, Player player2, GameRules rules) {
         this.player1 = player1;
         this.player2 = player2;
         this.rules = rules;
-    }
-
-    public static Game bootstrapGame(int gameMode, GameRules rules) {
-        switch (gameMode) {
-            case PLAYER_VS_AI:
-                return new Game(new HumanPlayer("User"), new AIPlayer("Computer"), rules);
-            case AI_VS_AI:
-                return new Game(new AIPlayer("Computer1"), new AIPlayer("Computer2"), rules);
-            default:
-                throw new IllegalArgumentException();
-        }
     }
 
     public void start() {
