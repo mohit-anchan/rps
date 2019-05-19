@@ -4,6 +4,7 @@ import mohit.rps.game.gesture.Gesture;
 import mohit.rps.game.io.StringAsker;
 
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 /**
@@ -14,9 +15,9 @@ public class HumanPlayerStrategy implements PlayStrategy {
     private List<Gesture> validGestures;
     private StringAsker asker;
 
-    public HumanPlayerStrategy(List<Gesture> validGestures, InputStream in) {
+    public HumanPlayerStrategy(List<Gesture> validGestures, InputStream in, PrintStream out) {
         this.validGestures = validGestures;
-        this.asker = new StringAsker(in, System.out);
+        this.asker = new StringAsker(in, out);
     }
 
     @Override

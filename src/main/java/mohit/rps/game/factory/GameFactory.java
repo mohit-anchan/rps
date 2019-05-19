@@ -18,7 +18,7 @@ public class GameFactory {
 
     public static Game createGame(int gameMode, GameEngine engine) {
         PlayStrategy aiStrategy = new AIPlayerStrategy(engine.getValidGestures());
-        PlayStrategy humanStrategy = new HumanPlayerStrategy(engine.getValidGestures(), System.in);
+        PlayStrategy humanStrategy = new HumanPlayerStrategy(engine.getValidGestures(), System.in, System.out);
 
         switch (gameMode) {
             case PLAYER_VS_AI:
