@@ -4,6 +4,8 @@ import mohit.rps.game.factory.GameFactory;
 import mohit.rps.game.io.IntegerAsker;
 import mohit.rps.game.rules.RPSGameEngine;
 
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.InputMismatchException;
 
 /**
@@ -16,7 +18,7 @@ public class BattleGround {
 
     public void begin() {
         while (true) {
-            int gameMode = getGameModeFromUser();
+            int gameMode = getGameModeFromUser(System.in, System.out);
 
             try {
                 Game game = GameFactory.createGame(gameMode, new RPSGameEngine());
@@ -29,7 +31,7 @@ public class BattleGround {
         }
     }
 
-    public int getGameModeFromUser() {
+    public int getGameModeFromUser(InputStream in, PrintStream out) {
         int userInput = 0;
 
         while (userInput == 0) {
@@ -39,9 +41,9 @@ public class BattleGround {
                     "Press 3 to exit game";
 
             try {
-                userInput = new IntegerAsker(System.in, System.out).ask(message);
+                userInput = new IntegerAsker(in, out).ask(message);
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input! Please try again");
+                out.println("Invalid input! Please try again");
                 continue;
             }
             break;
