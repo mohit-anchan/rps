@@ -1,59 +1,51 @@
 package mohit.rps.game;
 
-import mohit.rps.game.player.AIPlayer;
-import mohit.rps.game.player.HumanPlayer;
 import mohit.rps.game.player.Player;
-import mohit.rps.game.rule.GameRules;
-import mohit.rps.game.rule.RPSGameRules;
+import mohit.rps.game.rules.GameEngine;
 
 /**
  *
  */
 public class Game {
-    private GameRules rules;
+    private GameEngine engine;
 
     private Player player1;
     private Player player2;
 
     private Result result;
 
-    public Game(Player player1, Player player2, GameRules rules) {
+    public Game(Player player1, Player player2, GameEngine ge) {
         this.player1 = player1;
         this.player2 = player2;
-        this.rules = rules;
+        this.engine = ge;
     }
 
     public void start() {
-        player1.makeMove();
-        player2.makeMove();
-
-        printMoves();
-
-        result = rules.compareMoves(player1.getMove(), player2.getMove());
-    }
-
-    private void printMoves(){
-        System.out.println(player1.getName() + " plays "+player1.getMove());
-        System.out.println(player2.getName() + " plays "+player2.getMove());
+        player1.play();
+        player2.play();
+        this.result = engine.compareMoves(player1.getMove(), player2.getMove());
     }
 
     public void printResult(){
+        System.out.println(player1.getName() + " plays "+player1.getMove().getName());
+        System.out.println(player2.getName() + " plays "+player2.getMove().getName());
+
         System.out.println("===================================");
         System.out.println(getResultMessage());
         System.out.println("===================================");
     }
 
     private String getResultMessage(){
-        if (this.result == Result.Draw) {
+        if (this.result == Result.DRAW) {
             return "Its a Draw";
         }
 
-        if (this.result == Result.Player1) {
-            return this.player1.getMove() + " beats " + this.player2.getMove()
+        if (this.result == Result.PLAYER1_WINS) {
+            return this.player1.getMove().getName() + " beats " + this.player2.getMove().getName()
                     + "\n" + this.player1.getName() + " is the winner";
         }
 
-        return this.player2.getMove() + " beats " + this.player1.getMove()
+        return this.player2.getMove().getName() + " beats " + this.player1.getMove().getName()
                 + "\n" + this.player2.getName() + " is the winner";
     }
 

@@ -4,5 +4,5 @@ package mohit.rps.game;
  *
  */
 public enum Result {
-    Player1, Player2, Draw
+    PLAYER1_WINS, PLAYER2_WINS, DRAW
 }
