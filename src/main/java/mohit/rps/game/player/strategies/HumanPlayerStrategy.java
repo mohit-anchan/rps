@@ -8,7 +8,9 @@ import java.io.PrintStream;
 import java.util.List;
 
 /**
+ * Strategy for the Human player to make his/her move.
  *
+ * Created by Mohit.
  */
 public class HumanPlayerStrategy implements PlayStrategy {
 
@@ -24,16 +26,20 @@ public class HumanPlayerStrategy implements PlayStrategy {
     public Gesture getMove() {
         String userInput = fetchUserInput();
         return validGestures.stream()
-                .filter(m -> m.getInitial().equalsIgnoreCase(userInput))
+                .filter(m -> m.getShortCode().equalsIgnoreCase(userInput))
                 .findAny()
                 .orElseThrow(IllegalArgumentException::new);
     }
 
+    /**
+     * Lists down all the valid moves to the user and prompts him to make his move by entering a Gesture's short code.
+     * @return
+     */
     private String fetchUserInput() {
         StringBuilder message = new StringBuilder("Make your move by pressing one of below characters: ");
         for (Gesture gesture : validGestures) {
             /* This prints as "R for Rock" */
-            message.append("\n" + gesture.getInitial() + " for " + gesture.getName());
+            message.append("\n" + gesture.getShortCode() + " for " + gesture.getName());
         }
         return asker.ask(message.toString());
     }

@@ -9,7 +9,7 @@ import java.io.PrintStream;
 import java.util.InputMismatchException;
 
 /**
- *
+ * The main helper class that sets up and orchestrates the Game's instance.
  */
 public class BattleGround {
     public static void main(String[] args) {

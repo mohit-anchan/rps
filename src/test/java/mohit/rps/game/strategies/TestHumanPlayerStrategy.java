@@ -63,7 +63,7 @@ public class TestHumanPlayerStrategy {
     }
 
     @Test
-    public void test_pressing_incorrect_initial_throws_exception(){
+    public void test_pressing_incorrect_shortcode_throws_exception(){
         String incorrectUserInput = "Z";
         ByteArrayInputStream in = new ByteArrayInputStream(incorrectUserInput.getBytes());
 

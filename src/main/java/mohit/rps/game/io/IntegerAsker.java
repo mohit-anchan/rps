@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
- *
+ * Helper class for fetching a integer input from the user.
  */
 public class IntegerAsker {
     private final Scanner scanner;

@@ -4,7 +4,9 @@ import mohit.rps.game.player.Player;
 import mohit.rps.game.rules.GameEngine;
 
 /**
+ * The main class that maintains the state of the game.
  *
+ * Created by Mohit.
  */
 public class Game {
     private GameEngine engine;

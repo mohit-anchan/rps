@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
+ * Created by Mohit.
  */
 public class Rock extends Gesture {
     private static final List<Gesture> beats = Arrays.asList(new Scissor());
 
     @Override
-    public String getInitial() {
+    public String getShortCode() {
         return "R";
     }
 

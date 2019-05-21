@@ -8,7 +8,9 @@ import mohit.rps.game.player.strategies.PlayStrategy;
 import mohit.rps.game.rules.GameEngine;
 
 /**
+ * Factory class for bootstrapping a game instance
  *
+ * Created by Mohit.
  */
 public class GameFactory {
     /* Game Modes */
@@ -16,6 +18,12 @@ public class GameFactory {
     public static final int AI_VS_AI = 2;
     public static final int EXIT_GAME = 3;
 
+    /**
+     * Returns a Game instance based on the game mode chosen by the user
+     * @param gameMode
+     * @param engine
+     * @return
+     */
     public static Game createGame(int gameMode, GameEngine engine) {
         PlayStrategy aiStrategy = new AIPlayerStrategy(engine.getValidGestures());
         PlayStrategy humanStrategy = new HumanPlayerStrategy(engine.getValidGestures(), System.in, System.out);

@@ -14,9 +14,14 @@ import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 /**
+ * This class is the game engine for the Rock Paper Scissor game.
  *
+ * Created by Mohit.
  */
 public class RPSGameEngine extends GameEngine {
+    /**
+     * Holds the list of valid gestures that a user is allowed to play.
+     */
     public static final List<Gesture> validGestures = initializeGestures();
 
     @Override
@@ -24,6 +29,12 @@ public class RPSGameEngine extends GameEngine {
         return validGestures;
     }
 
+    /**
+     * Compares the moves played by both the users and returns the outcome.
+     * @param player1Move
+     * @param player2Move
+     * @return
+     */
     @Override
     public Result compareMoves(Gesture player1Move, Gesture player2Move) {
         if (player1Move.equals(player2Move)) {

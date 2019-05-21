@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
- *
+ * Helper class for fetching a string input from the user.
  */
 public class StringAsker {
     private final Scanner scanner;
