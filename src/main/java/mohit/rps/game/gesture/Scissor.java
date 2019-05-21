@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Mohit.
  */
 public class Scissor extends Gesture {
-    private static final List<Gesture> beats = Arrays.asList(new Paper());
+    private static final List<Gesture> beats = Arrays.asList(new Paper(), new Lizard());
 
     @Override
     public String getShortCode() {

@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Mohit.
  */
 public class Paper extends Gesture {
-    private static final List<Gesture> beats = Arrays.asList(new Rock());
+    private static final List<Gesture> beats = Arrays.asList(new Rock(), new Spock());
 
     @Override
     public String getShortCode() {

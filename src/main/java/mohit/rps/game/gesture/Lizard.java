@@ -4,19 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Mohit.
+ * Created by mohit on 21-May-19.
  */
-public class Rock extends Gesture {
-    private static final List<Gesture> beats = Arrays.asList(new Scissor(), new Lizard());
-
+public class Lizard extends Gesture {
+    private static final List<Gesture> beats = Arrays.asList(new Paper(), new Spock());
     @Override
     public String getShortCode() {
-        return "R";
+        return "L";
     }
 
     @Override
     public List<Gesture> getBeats() {
         return beats;
     }
-
 }

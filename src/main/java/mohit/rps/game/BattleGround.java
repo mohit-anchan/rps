@@ -3,6 +3,7 @@ package mohit.rps.game;
 import mohit.rps.game.factory.GameFactory;
 import mohit.rps.game.io.IntegerAsker;
 import mohit.rps.game.rules.RPSGameEngine;
+import mohit.rps.game.rules.RPSLSGameEngine;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -21,7 +22,7 @@ public class BattleGround {
             int gameMode = getGameModeFromUser(System.in, System.out);
 
             try {
-                Game game = GameFactory.createGame(gameMode, new RPSGameEngine());
+                Game game = GameFactory.createGame(gameMode, new RPSLSGameEngine());
                 game.start();
                 game.printResult();
             } catch (IllegalArgumentException e) {
