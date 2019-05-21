@@ -1,7 +1,7 @@
 # Rock Paper Scissor
 
 ## Prerequisites
-In order to build this container you'll need maven installed.
+In order to build this application you'll need maven installed.
 
 + [Java 1.8 or above](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 + [Apache Maven](https://maven.apache.org/download.cgi?Preferred=ftp://mirror.reverse.net/pub/apache/)
