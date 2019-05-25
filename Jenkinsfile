@@ -16,7 +16,7 @@ pipeline{
                 }
             }
         }
-        stage('Packaging Jar'){
+        stage('Packaging Jar...'){
             steps {
                 withMaven(maven: 'maven_3_6_1'){
                     sh 'mvn package'
